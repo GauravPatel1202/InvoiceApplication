@@ -1,20 +1,72 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<header>
+      <h1>Invoice</h1>
+    </header>
+    <article>
+      <h1>Recipient</h1>
+      <table class="meta">
+        <tr>
+          <th><span contenteditable>Invoice #</span></th>
+          <td><span contenteditable>101138</span></td>
+        </tr>
+        <tr>
+          <th><span contenteditable>Date</span></th>
+          <td><span contenteditable>January 1, 2012</span></td>
+        </tr>
+        <tr>
+          <th><span contenteditable>Due Date</span></th>
+          <td><span contenteditable>January 1, 2012</span></td>
+        </tr>
+         <tr>
+          <th><span >Balance Due</span></th>
+          <td><span >$</span><span>600.00</span></td>
+        </tr>
+      </table>
+      <table class="inventory">
+        <thead>
+          <tr>
+            <th><span contenteditable>Item</span></th>
+            <th><span contenteditable>Description</span></th>
+            <th><span contenteditable>Rate</span></th>
+            <th><span contenteditable>Quantity</span></th>
+            <th><span contenteditable>Price</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a class="cut">-</a><span contenteditable>Front End Consultation</span></td>
+            <td><span contenteditable>Experience Review</span></td>
+            <td><span data-prefix>$</span><span contenteditable>150.00</span></td>
+            <td><span contenteditable>4</span></td>
+            <td><span data-prefix>$</span><span>600.00</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="add">+</a>
+      <table class="balance">
+        <tr>
+          <th><span contenteditable>Total</span></th>
+          <td><span data-prefix>$</span><span>600.00</span></td>
+        </tr>
+        <tr>
+          <th><span contenteditable>Amount Paid</span></th>
+          <td><span data-prefix>$</span><span contenteditable>0.00</span></td>
+        </tr>
+       
+      </table>
+    </article>
+    <aside>
+      <span>Notes</span>
+      <div contenteditable style="height: 60px;
+    border: 1px solid;
+    border-radius: 0px;">
+        <p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
+      </div>
+    </aside>
+    <aside>
+      <span>Term</span>
+      <div contenteditable style="height: 60px;
+    border: 1px solid;
+    border-radius: 0px;">
+        <p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
+      </div>
+    </aside>
