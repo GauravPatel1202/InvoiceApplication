@@ -1,24 +1,34 @@
+<form #testForm="ngForm">
 <header>
       <h1>Invoice</h1>
-    </header>
+</header>
     <article>
       <h1>Recipient</h1>
       <table class="meta">
         <tr>
-          <th><span contenteditable>Invoice #</span></th>
-          <td><span contenteditable>101138</span></td>
+          <th><span>Invoice #</span></th>
+          <td><span contenteditable="true"
+           name="Invoice"
+           [(ngModel)]="dataForm.Invoice"></span></td>
         </tr>
         <tr>
           <th><span contenteditable>Date</span></th>
-          <td><span contenteditable>January 1, 2012</span></td>
+          <td><span contenteditable="true"
+              name="date"
+              [(ngModel)]="dataForm.date"></span>
+          </td>
         </tr>
         <tr>
           <th><span contenteditable>Due Date</span></th>
-          <td><span contenteditable>January 1, 2012</span></td>
+          <td><span contenteditable="true"
+              name="date"
+              [(ngModel)]="dataForm.Duedate"></span></td>
         </tr>
          <tr>
           <th><span >Balance Due</span></th>
-          <td><span >$</span><span>600.00</span></td>
+          <td><span >$</span><span contenteditable="false"
+              name="balanceDue"
+              [(ngModel)]="dataForm.balanceDue"></span></td>
         </tr>
       </table>
       <table class="inventory">
@@ -32,9 +42,15 @@
         </thead>
         <tbody>
           <tr *ngFor="let data of item;index as i" [attr.data-index]="i">
-            <td><span contenteditable>{{data.Item}}</span></td>
-            <td><span data-prefix>$</span><span contenteditable>{{data.Rate}}</span></td>
-            <td><span contenteditable>{{data.Quantity}}</span></td>
+            <td><span contenteditable="true"
+              name="dateItem"
+              [(ngModel)]="data.Item"></span></td>
+            <td><span data-prefix>$</span><span contenteditable="true"
+              name="dateRate"
+              [(ngModel)]="data.Rate" (input)="InvoiceCulc($event.target.value)"></span></td>
+            <td><span contenteditable="true"
+              name="Quantity"
+              [(ngModel)]="data.Quantity" (input)="InvoiceCulc($event.target.value)"></span></td>
             <td><span data-prefix>$</span><span>{{data.Rate*data.Quantity}}</span><a class="cut" (click)="removeItem(i)">X</a></td>
           </tr>
         </tbody>
@@ -43,19 +59,29 @@
       <table class="balance">
         <tr>
           <th><span contenteditable>Sub Total</span></th>
-          <td><span data-prefix>$</span><span>600.00</span></td>
+          <td><span data-prefix>$</span><span 
+          	  contenteditable="false"
+              name="subTotal"
+              [(ngModel)]="dataForm.subTotal"></span></td>
         </tr>
          <tr>
           <th><span contenteditable>TAX</span></th>
-          <td><span>10.00</span><span data-prefix>%</span></td>
+          <td><span contenteditable="true"
+              name="texRate"
+              [(ngModel)]="dataForm.texRate" (input)="InvoiceCulc($event.target.value)"></span><span data-prefix>%</span></td>
         </tr>
         <tr>
           <th><span contenteditable>Total</span></th>
-          <td><span data-prefix>$</span><span>600.00</span></td>
+          <td><span data-prefix>$</span><span
+          	  contenteditable="false"
+              name="totalAmount"
+              [(ngModel)]="dataForm.totalAmount"></span></td>
         </tr>
         <tr>
           <th><span contenteditable>Amount Paid</span></th>
-          <td><span data-prefix>$</span><span contenteditable>0.00</span></td>
+          <td><span data-prefix>$</span><span contenteditable="true"
+              name="amountPaid"
+              [(ngModel)]="dataForm.amountPaid" (input)="InvoiceCulc($event.target.value)"></span></td>
         </tr>
        
       </table>
@@ -63,12 +89,18 @@
     <aside class="addNotes">
       <span class="headerline">Notes</span>
       <div contenteditable class="notesedit">
-        <p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
+        <p>Notes</p>
       </div>
     </aside>
     <aside class="addNotes">
       <span class="headerline">Term</span>
       <div contenteditable class="notesedit">
-        <p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
+        <p contenteditable="true" [formControl]="myControl"></p>
+
+
       </div>
     </aside>
+
+    <a clasee="printpage" (click)='printInvoice()'>Print Invoice</a>
+</form>
+

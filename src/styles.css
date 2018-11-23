@@ -36,7 +36,8 @@ h1 { font: bold 100% sans-serif; letter-spacing: 0.5em; text-align: center; text
 
 table { font-size: 75%; table-layout: fixed; width: 100%; }
 table { border-collapse: separate; border-spacing: 2px; }
-th, td { border-width: 1px; padding: 0.5em; position: relative; text-align: left; }
+th { border-width: 1px; padding: 0.7em 0.5em; position: relative; text-align: left; }
+td { border-width: 1px; padding: 1.0em 0.5em; position: relative; text-align: left; }
 th, td { border-radius: 0.25em; border-style: solid; }
 th { background: #EEE; border-color: #BBB; }
 td { border-color: #DDD; }
@@ -161,7 +162,10 @@ aside h1 { border-color: #999; border-bottom-style: solid; }
 
 .cut { opacity: 1; position: absolute; top: 0; right: -2.0em; }
 .cut { -webkit-transition: opacity 100ms ease-in; }
-
+.printpage{
+	float: right;
+    color: blue;
+}
 
 
 @media print {
@@ -169,7 +173,7 @@ aside h1 { border-color: #999; border-bottom-style: solid; }
 	html { background: none; padding: 0; }
 	body { box-shadow: none; margin: 0; }
 	span:empty { display: none; }
-	.add, .cut { display: none; }
+	.add, .cut .printpage{ display: none; }
 }
 
 @page { margin: 0; }
