@@ -88,14 +88,12 @@ export class InvoiceComponent implements OnInit {
 
   }
   printInvoice(forms){
+    forms.control.touched=true;
   	if(forms.invalid){
      alert("Please enter Valid data")
      return true
   	}
-  	console.log(forms.invalid)
   	window.print()
   }
-   trackByIndex(index: number, obj: any): any {
-    return index;
-  }
+  
 }

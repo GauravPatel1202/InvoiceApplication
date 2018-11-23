@@ -353,9 +353,14 @@ article .recipient {
 	min-height: 6em;
 }
 
-address.ng-invalid,
-span.ng-invalid,
-div.ng-invalid {
+form.ng-dirty address.ng-dirty.ng-invalid,
+form.ng-dirty span.ng-dirty.ng-invalid,
+form.ng-dirty div.ng-dirty.ng-invalid {
+	border: 1px solid red !important;
+}
+form.ng-touched address.ng-invalid,
+form.ng-touched span.ng-invalid,
+form.ng-touched div.ng-invalid {
 	border: 1px solid red !important;
 }
 
