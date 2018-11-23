@@ -31,23 +31,40 @@
 *[contenteditable] {
 	cursor: pointer;
 }
+html {
+	font: 16px/1 'Open Sans', sans-serif;
+	overflow: auto;
+	padding: 0.5in;
+}
 
+html {
+	background: #999;
+	cursor: default;
+}
+
+body {
+	box-sizing: border-box;
+	height: 11in;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0.5in;
+	width: 8.5in;
+}
+
+body {
+	background: #FFF;
+	border-radius: 1px;
+	box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+}
 span[contenteditable] {
 	display: inline-block;
 }
-
-
-/* heading */
-
 h1 {
 	font: bold 100% sans-serif;
 	letter-spacing: 0.5em;
 	text-align: center;
 	text-transform: uppercase;
 }
-
-
-/* table */
 
 table {
 	font-size: 75%;
@@ -89,31 +106,7 @@ td {
 	border-color: #DDD;
 }
 
-html {
-	font: 16px/1 'Open Sans', sans-serif;
-	overflow: auto;
-	padding: 0.5in;
-}
 
-html {
-	background: #999;
-	cursor: default;
-}
-
-body {
-	box-sizing: border-box;
-	height: 11in;
-	margin: 0 auto;
-	overflow: hidden;
-	padding: 0.5in;
-	width: 8.5in;
-}
-
-body {
-	background: #FFF;
-	border-radius: 1px;
-	box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
-}
 
 header:after {
 	clear: both;
@@ -165,10 +158,6 @@ header input {
 	top: 0;
 	width: 100%;
 }
-
-
-/* article */
-
 article,
 article address,
 table.meta,
@@ -190,10 +179,6 @@ article h1 {
 article address {
 	float: left;
 }
-
-
-/* table meta & balance */
-
 table.meta,
 table.balance {
 	float: right;
@@ -217,15 +202,10 @@ table.meta th {
 table.meta td {
 	width: 60%;
 }
-
-
-/* table items */
-
 table.inventory {
 	clear: both;
 	width: 100%;
 }
-
 table.inventory th {
 	font-weight: bold;
 	text-align: center;
