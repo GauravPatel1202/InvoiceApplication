@@ -1,36 +1,49 @@
 <form #testForm="ngForm">
 <header>
       <h1>Invoice</h1>
+      <address  class="recipient" contenteditable="true"
+              name="InvoiceAddress"
+              [(ngModel)]="InvoiceAddress" required>
+				
+	  </address>
 </header>
-    <article>
-      <h1>Recipient</h1>
+ <article >
+      	<div >
+			<h1>Bill To</h1>
+			<address class="recipient" contenteditable="true"
+              name="RecipientAddress"
+              [(ngModel)]="RecipientAddress" required>
+				
+			</address>
+		</div>
       <table class="meta">
         <tr>
           <th><span>Invoice #</span></th>
           <td><span contenteditable="true"
            name="Invoice"
-           [(ngModel)]="dataForm.Invoice"></span></td>
+           [(ngModel)]="Invoice" required pattern="[0-9]"></span></td>
         </tr>
         <tr>
           <th><span contenteditable>Date</span></th>
           <td><span contenteditable="true"
               name="date"
-              [(ngModel)]="dataForm.date"></span>
+              [(ngModel)]="date" required pattern="\d{1,2}/\d{1,2}/\d{4}"></span>
           </td>
         </tr>
         <tr>
           <th><span contenteditable>Due Date</span></th>
           <td><span contenteditable="true"
-              name="date"
-              [(ngModel)]="dataForm.Duedate"></span></td>
+              name="Duedate"
+              [(ngModel)]="Duedate" required pattern="\d{1,2}/\d{1,2}/\d{4}"></span></td>
         </tr>
          <tr>
           <th><span >Balance Due</span></th>
           <td><span >$</span><span contenteditable="false"
               name="balanceDue"
-              [(ngModel)]="dataForm.balanceDue"></span></td>
+              [(ngModel)]="balanceDue"></span></td>
         </tr>
       </table>
+
       <table class="inventory">
         <thead>
           <tr>
@@ -64,45 +77,49 @@
           <td><span data-prefix>$</span><span 
           	  contenteditable="false"
               name="subTotal"
-              [(ngModel)]="dataForm.subTotal"></span></td>
+              [(ngModel)]="subTotal"></span></td>
         </tr>
          <tr>
           <th><span contenteditable>TAX</span></th>
           <td><span contenteditable="true"
               name="texRate"
-              [(ngModel)]="dataForm.texRate" (input)="InvoiceCulc($event.target.value)"></span><span data-prefix>%</span></td>
+              [(ngModel)]="texRate" (input)="InvoiceCulc($event.target.value)" pattern="[0-9]"></span><span data-prefix>%</span></td>
         </tr>
         <tr>
           <th><span contenteditable>Total</span></th>
           <td><span data-prefix>$</span><span
           	  contenteditable="false"
               name="totalAmount"
-              [(ngModel)]="dataForm.totalAmount"></span></td>
+              [(ngModel)]="totalAmount"></span></td>
         </tr>
         <tr>
           <th><span contenteditable>Amount Paid</span></th>
           <td><span data-prefix>$</span><span contenteditable="true"
               name="amountPaid"
-              [(ngModel)]="dataForm.amountPaid" (input)="InvoiceCulc($event.target.value)"></span></td>
+              [(ngModel)]="amountPaid" (input)="InvoiceCulc($event.target.value)" pattern="[0-9]"></span></td>
         </tr>
        
       </table>
     </article>
     <aside class="addNotes">
       <span class="headerline">Notes</span>
-      <div contenteditable class="notesedit">
-        <p>Notes</p>
+      <div contenteditable class="notesedit" contenteditable="true"
+              name="Notes"
+              [(ngModel)]="Notes" required>
+        
       </div>
     </aside>
     <aside class="addNotes">
       <span class="headerline">Term</span>
-      <div contenteditable class="notesedit">
-        <p contenteditable="true" [formControl]="myControl"></p>
+      <div  class="notesedit" contenteditable="true"
+              name="Term"
+              [(ngModel)]="Term" required>
+        
 
 
       </div>
     </aside>
 
-    <a clasee="printpage" (click)='printInvoice()'>Print Invoice</a>
+    <a clasee="printpage" (click)='printInvoice(testForm)'>Print Invoice</a>
 </form>
 

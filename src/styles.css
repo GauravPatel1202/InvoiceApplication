@@ -67,9 +67,10 @@ header input { cursor: pointer; -ms-filter:"progid:DXImageTransform.Microsoft.Al
 
 article, article address, table.meta, table.inventory { margin: 0 0 3em; }
 article:after { clear: both; content: ""; display: table; }
-article h1 { clip: rect(0 0 0 0); position: absolute; }
+article h1 {text-align: left;
+text-transform: none; }
 
-article address { float: left; font-size: 125%; font-weight: bold; }
+article address { float: left; }
 
 /* table meta & balance */
 
@@ -167,6 +168,20 @@ aside h1 { border-color: #999; border-bottom-style: solid; }
     color: blue;
 }
 
+header .recipient, article .recipient{
+	border-radius: 0.25em;
+    padding: .25em 0.25em;
+    width: 24em;
+    margin: 14px 0px;
+    border: 1px solid #ddd !important; 
+        font-size: 75%;
+    font-style: normal;
+    line-height: 1.25;
+    min-height: 6em;
+}
+address.ng-invalid,span.ng-invalid,div.ng-invalid{
+	border: 1px solid red !important;
+}
 
 @media print {
 	* { -webkit-print-color-adjust: exact; }

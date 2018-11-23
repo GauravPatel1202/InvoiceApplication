@@ -10,40 +10,42 @@ export class InvoiceComponent implements OnInit {
   item:any;
   itemObject:Object;
   dataForm:Object;
+  Invoice:any;
+  date:any;
+  Duedate:any;
+  subTotal:any;
+  texRate:any;
+  totalAmount:any;
+  amountPaid:any;
+  balanceDue:any;
+  InvoiceAddress:any;
+  RecipientAddress:any;
+  texAmount:any;
   myControl = new FormControl;
   constructor() {
 
    }
 
   ngOnInit() {
-  	this.dataForm={
-  	"Invoice":0,
-  	"date":'',
-  	"Duedate":'',
-  	"subTotal":0,
-  	"texRate":0,
-  	"totalAmount":0,
-  	"amountPaid":0,
-  	"balanceDue":0,
-  }
-  this.item=[{
-  		'id': 1,
+  	let d = new Date();
+  	this.Invoice=0;
+    this.date=d.toLocaleDateString();
+    this.Duedate=d.toLocaleDateString();
+   this.subTotal=0;
+  this.texRate=0;
+  this.totalAmount=0;
+  this.amountPaid=0;
+  this.balanceDue=0;
+  this.InvoiceAddress="";
+  this.RecipientAddress="";
+  this.item=[
+  {
+  		'id':1,
   		"Item":'Name of Item',
-  		"Rate":"10",
+  		"Rate":"0",
   		"Quantity":"1",
-  	},
-  	{
-  		'id': 2,
-  		"Item":'Name of Item',
-  		"Rate":"10",
-  		"Quantity":"1",
-  	},
-  	{
-  		'id': 3,
-  		"Item":'Name of Item',
-  		"Rate":"50",
-  		"Quantity":"1",
-  	}]
+  	}
+  ]
   
 
   }
@@ -54,12 +56,12 @@ export class InvoiceComponent implements OnInit {
   		"Rate":"0",
   		"Quantity":"1",
   	});
-  	this.InvoiceCulc()
+  	this.InvoiceCulc('' ,'' ,'')
    console.log(this.item)
   }
   removeItem(data){
   	this.item.splice(data, 1)
-  	this.InvoiceCulc()
+  	this.InvoiceCulc('' ,'' ,'')
 
   }
   InvoiceCulc(filed, data,id){
@@ -67,17 +69,17 @@ export class InvoiceComponent implements OnInit {
   	this.item[id][filed]=data;
   	}
   	if(this.item.length>1){
-  	this.dataForm.subTotal= this.item.reduce(function(previousValue, currentValue) {
+  	this.subTotal= this.item.reduce(function(previousValue, currentValue) {
   			return  previousValue+  currentValue.Rate* currentValue.Quantity;
   },0);
   	
   }else if(this.item.length==1){
-     this.dataForm.subTotal=this.item[0].Rate*this.item[0].Quantity
+     this.subTotal=this.item[0].Rate*this.item[0].Quantity
     
   }
-  this.texAmount=this.dataForm.subTotal*(this.dataForm.texRate/100)
-  this.dataForm.totalAmount=this.dataForm.subTotal+this.texAmount
-  this.dataForm.balanceDue=this.dataForm.totalAmount-this.dataForm.amountPaid
+  this.texAmount=this.subTotal*(this.texRate/100)
+  this.totalAmount=this.subTotal+this.texAmount
+  this.balanceDue=this.totalAmount-this.amountPaid
   console.log(this.item)
 
   }
@@ -85,7 +87,12 @@ export class InvoiceComponent implements OnInit {
   	console.log(e,i)
 
   }
-  printInvoice(){
+  printInvoice(forms){
+  	if(forms.invalid){
+     alert("Please enter Valid data")
+     return true
+  	}
+  	console.log(forms.invalid)
   	window.print()
   }
    trackByIndex(index: number, obj: any): any {
