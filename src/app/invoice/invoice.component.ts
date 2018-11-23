@@ -26,19 +26,34 @@ export class InvoiceComponent implements OnInit {
   	"amountPaid":0,
   	"balanceDue":0,
   }
-  this.item=[]
+  this.item=[{
+  		'id': 1,
+  		"Item":'Name of Item',
+  		"Rate":"10",
+  		"Quantity":"1",
+  	},
+  	{
+  		'id': 2,
+  		"Item":'Name of Item',
+  		"Rate":"10",
+  		"Quantity":"1",
+  	},
+  	{
+  		'id': 3,
+  		"Item":'Name of Item',
+  		"Rate":"50",
+  		"Quantity":"1",
+  	}]
   
 
   }
   addItem(){
-  	let listObject:any={
+  	this.item.push({
   		'id': this.item.length,
   		"Item":'Name of Item',
   		"Rate":"0",
   		"Quantity":"1",
-  	}
-  	this.item.push(listObject)
-
+  	});
   	this.InvoiceCulc()
    console.log(this.item)
   }
@@ -47,10 +62,9 @@ export class InvoiceComponent implements OnInit {
   	this.InvoiceCulc()
 
   }
-  InvoiceCulc(){
-  	for (var i = this.item.length - 1; i >= 0; i--) {
-  		this.item[i].Rate =Number(this.item[i].Rate)
-  		this.item[i].Quantity =Number(this.item[i].Quantity)
+  InvoiceCulc(filed, data,id){
+  	if(!!filed&&!!data){
+  	this.item[id][filed]=data;
   	}
   	if(this.item.length>1){
   	this.dataForm.subTotal= this.item.reduce(function(previousValue, currentValue) {
@@ -64,15 +78,17 @@ export class InvoiceComponent implements OnInit {
   this.texAmount=this.dataForm.subTotal*(this.dataForm.texRate/100)
   this.dataForm.totalAmount=this.dataForm.subTotal+this.texAmount
   this.dataForm.balanceDue=this.dataForm.totalAmount-this.dataForm.amountPaid
+  console.log(this.item)
+
+  }
+  onValueUpdate(e,i){
+  	console.log(e,i)
 
   }
   printInvoice(){
   	window.print()
   }
-
-/* Prototyping
-/* ========================================================================== */
-
-
-
+   trackByIndex(index: number, obj: any): any {
+    return index;
+  }
 }

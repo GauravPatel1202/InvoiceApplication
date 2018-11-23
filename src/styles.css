@@ -173,7 +173,10 @@ aside h1 { border-color: #999; border-bottom-style: solid; }
 	html { background: none; padding: 0; }
 	body { box-shadow: none; margin: 0; }
 	span:empty { display: none; }
-	.add, .cut .printpage{ display: none; }
+	.add, .cut ,.printpage{ display: none; }
+	.cut{
+		display: none;
+	}
 }
 
 @page { margin: 0; }

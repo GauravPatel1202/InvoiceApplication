@@ -41,17 +41,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of item;index as i" [attr.data-index]="i">
-            <td><span contenteditable="true"
+          <tr *ngFor="let datavalue of item;let id = index;">
+          	<td><span contenteditable="true"
               name="dateItem"
-              [(ngModel)]="data.Item"></span></td>
-            <td><span data-prefix>$</span><span contenteditable="true"
+              (input)="InvoiceCulc('Item', $event.target.innerHTML,id)">{{datavalue.Item}}</span></td>
+              {{index}}
+            <td><span data-prefix>$</span>
+            	<span contenteditable="true"
               name="dateRate"
-              [(ngModel)]="data.Rate" (input)="InvoiceCulc($event.target.value)"></span></td>
+              (input)="InvoiceCulc('Rate', $event.target.innerHTML,id)">{{item[id].Rate}}</span></td>
             <td><span contenteditable="true"
               name="Quantity"
-              [(ngModel)]="data.Quantity" (input)="InvoiceCulc($event.target.value)"></span></td>
-            <td><span data-prefix>$</span><span>{{data.Rate*data.Quantity}}</span><a class="cut" (click)="removeItem(i)">X</a></td>
+              (input)="InvoiceCulc('Quantity', $event.target.innerHTML,id)">{{datavalue.Quantity}}</span></td>
+            <td><span data-prefix>$</span><span>{{datavalue.Rate*datavalue.Quantity}}</span><a class="cut" (click)="removeItem(id)">X</a></td>
           </tr>
         </tbody>
       </table>
