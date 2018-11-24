@@ -21,7 +21,7 @@
           <th><span>Invoice #</span></th>
           <td><span contenteditable="true"
            name="Invoice"
-           [(ngModel)]="Invoice" required pattern="[0-9]"></span></td>
+           [(ngModel)]="Invoice" required pattern="[0-9]+"></span></td>
         </tr>
         <tr>
           <th><span contenteditable>Date</span></th>
@@ -83,7 +83,7 @@
           <th><span contenteditable>TAX</span></th>
           <td><span contenteditable="true"
               name="texRate"
-              [(ngModel)]="texRate" (input)="InvoiceCulc($event.target.value)" pattern="[0-9]"></span><span data-prefix>%</span></td>
+              [(ngModel)]="texRate" (input)="InvoiceCulc($event.target.value)" pattern="[0-9]+"></span><span data-prefix>%</span></td>
         </tr>
         <tr>
           <th><span contenteditable>Total</span></th>
@@ -96,7 +96,7 @@
           <th><span contenteditable>Amount Paid</span></th>
           <td><span data-prefix>$</span><span contenteditable="true"
               name="amountPaid"
-              [(ngModel)]="amountPaid" (input)="InvoiceCulc($event.target.value)" pattern="[0-9]"></span></td>
+              [(ngModel)]="amountPaid" (input)="InvoiceCulc($event.target.value)" pattern="[0-9]+"></span></td>
         </tr>
        
       </table>
